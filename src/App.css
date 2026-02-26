@@ -773,11 +773,11 @@
 
     .stat-value {
         font-size: 14px;
+    }
 
-        /* Hide widgets when any app is open on mobile to save space */
-        .has-open-apps .widgets-container {
-            display: none !important;
-        }
+    /* Hide widgets when any app is open on mobile to save space */
+    .has-open-apps .widgets-container {
+        display: none !important;
     }
 }
 
