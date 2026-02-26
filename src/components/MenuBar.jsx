@@ -22,7 +22,7 @@ export default function MenuBar({ onToggleTheme, theme, onOpenApp, onCloseAll, o
 
     const menus = {
         apple: [
-            { label: 'About This OS', action: () => onOpenApp('about') },
+            { label: 'About M.S.I - Data Solutions', action: () => onOpenApp('about') },
             { type: 'divider' },
             { label: 'System Settings...', action: onToggleTheme },
             { label: 'App Store...', action: () => window.open('https://github.com/Femibabz', '_blank') },
