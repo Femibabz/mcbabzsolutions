@@ -20,10 +20,21 @@ function App() {
     useEffect(() => {
         const checkMobile = () => {
             if (window.innerWidth < 768) {
+                // Only lock automatically if it's a mobile device on load
+                // or if specifically requested. For now, we'll keep the auto-lock for mobile.
                 setIsLocked(true);
             }
         };
         checkMobile();
+
+        // Listen for large resizes that might indicate switching between desktop/mobile modes
+        const handleResize = () => {
+            if (window.innerWidth >= 1024 && isLocked) {
+                setIsLocked(false);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     const getTimeClass = () => {

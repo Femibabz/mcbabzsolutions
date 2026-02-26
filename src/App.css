@@ -655,3 +655,94 @@
     border-radius: 12px;
     border: 1px solid var(--border-glass);
 }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .menu-bar {
+        padding: 0 12px;
+    }
+
+    .menu-bar-left .menu-item:not(.apple-icon):not(:nth-child(2)):not(:nth-child(3)) {
+        display: none;
+    }
+
+    /* Keep Finder and File, hide the rest on mobile */
+    .menu-bar-left .menu-item-container:nth-child(n+4) {
+        display: none;
+    }
+
+    .menu-bar-left .menu-item:nth-child(n+5) {
+        display: none;
+    }
+
+    .menu-bar-right .menu-item:not(.date-display) {
+        gap: 8px;
+    }
+
+    .menu-bar-right .date-display {
+        display: none;
+    }
+
+    /* Dock Adjustments */
+    .dock {
+        padding: 8px;
+        gap: 8px;
+        border-radius: 16px;
+    }
+
+    .dock-icon-wrapper {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+    }
+
+    .dock-icon-wrapper svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* Window Adjustments */
+    .window {
+        top: var(--menu-height) !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: calc(100% - var(--menu-height) - 80px) !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0;
+        transform: none !important;
+    }
+
+    .window-header {
+        cursor: default;
+    }
+
+    .window-content {
+        padding: 16px;
+    }
+
+    /* Hide Widgets on Mobile to avoid clutter */
+    .widgets-container {
+        display: none;
+    }
+
+    /* Lock Screen Adjustments */
+    .lock-time {
+        font-size: 60px;
+    }
+
+    .lock-date {
+        font-size: 18px;
+    }
+
+    .status-bar {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .widgets-container {
+        right: 20px;
+        width: 240px;
+    }
+}

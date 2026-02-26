@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { X, Minus, Maximize2 } from 'lucide-react';
 
 export default function Window({ id, title, children, onClose, onMinimize, isFocused, onFocus }) {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <motion.div
-            drag
+            drag={!isMobile}
             dragMomentum={false}
             initial={{ scale: 0.3, opacity: 0, y: 400 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
