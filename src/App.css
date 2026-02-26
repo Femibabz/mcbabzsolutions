@@ -656,108 +656,132 @@
     border: 1px solid var(--border-glass);
 }
 
-/* Mobile Responsiveness */
+/* Mobile Responsiveness Improvements (Final) */
 @media screen and (max-width: 768px) {
+    .desktop {
+        background-attachment: scroll;
+        /* Better for mobile performance */
+    }
+
     .menu-bar {
         padding: 0 12px;
+        height: 32px;
     }
 
-    .menu-bar-left .menu-item:not(.apple-icon):not(:nth-child(2)):not(:nth-child(3)) {
-        display: none;
+    /* Hide non-essential menu items */
+    .menu-bar-left .menu-item-container:nth-child(n+3) {
+        display: none !important;
     }
 
-    /* Keep Finder and File, hide the rest on mobile */
-    .menu-bar-left .menu-item-container:nth-child(n+4) {
-        display: none;
-    }
-
-    .menu-bar-left .menu-item:nth-child(n+5) {
-        display: none;
-    }
-
-    .menu-bar-right .menu-item:not(.date-display) {
-        gap: 8px;
-    }
-
-    .menu-bar-right .date-display {
-        display: none;
+    .menu-bar-right .date-display,
+    .menu-bar-right .menu-item:not(:last-child) {
+        display: none !important;
     }
 
     /* Dock Adjustments */
+    .dock-container {
+        bottom: 10px;
+    }
+
     .dock {
-        padding: 8px;
-        gap: 8px;
-        border-radius: 16px;
+        padding: 6px;
+        gap: 6px;
+        border-radius: 14px;
     }
 
     .dock-icon-wrapper {
-        width: 42px;
-        height: 42px;
-        border-radius: 10px;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
     }
 
     .dock-icon-wrapper svg {
-        width: 20px !important;
-        height: 20px !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 
-    /* Window Adjustments */
+    /* Full-screen Windows */
     .window {
-        top: var(--menu-height) !important;
+        top: 32px !important;
+        /* Menu bar height */
         left: 0 !important;
         width: 100% !important;
-        height: calc(100% - var(--menu-height) - var(--dock-height) - 100px) !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
-        border-radius: 0;
+        height: calc(100% - 32px - 60px) !important;
+        /* Subtract menu and dock space */
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
         transform: none !important;
+        box-shadow: none !important;
     }
 
     .window-header {
+        height: 36px;
         cursor: default;
     }
 
     .window-content {
-        padding: 16px;
+        padding: 12px;
     }
 
-    /* Restore Widgets on Mobile but in a scrollable container */
+    /* Dedicated Mobile Widgets View */
     .widgets-container {
-        display: flex;
-        flex-direction: column;
-        top: auto;
-        bottom: calc(var(--dock-height) + 40px);
-        right: 0;
-        width: 100%;
-        max-height: 200px;
-        overflow-y: auto;
-        padding: 0 16px 20px 16px;
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid var(--border-glass);
-        z-index: 50;
+        position: fixed !important;
+        top: auto !important;
+        bottom: 75px !important;
+        /* Above Dock */
+        right: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        max-height: 180px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        /* Horizontal scroll for better mobile feel */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding: 8px 16px !important;
+        gap: 12px !important;
+        background: rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(20px) !important;
+        border-top: 1px solid var(--border-glass) !important;
+        z-index: 1000 !important;
+        scrollbar-width: thin !important;
+    }
+
+    .widgets-container::-webkit-scrollbar {
+        height: 3px;
+        display: block !important;
     }
 
     .widget {
-        width: 100%;
-        margin-bottom: 12px;
+        min-width: 220px;
+        width: 220px;
+        height: 160px;
+        margin-bottom: 0 !important;
+        padding: 10px !important;
+        font-size: 12px;
+        overflow-y: auto;
     }
 
-    /* Lock Screen Adjustments */
-    .lock-time {
-        font-size: 60px;
+    .widget-label {
+        font-size: 9px;
     }
 
-    .lock-date {
-        font-size: 18px;
+    .clock-time {
+        font-size: 20px;
     }
 
-    .status-bar {
-        padding: 0 20px;
+    .stat-value {
+        font-size: 14px;
+    }
+
+    /* Hide widgets when a window is focused to save space */
+    .window.focused~.widgets-container {
+        display: none !important;
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) and (min-width: 769px) {
     .widgets-container {
         right: 20px;
         width: 240px;
