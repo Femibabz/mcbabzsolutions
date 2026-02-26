@@ -95,11 +95,12 @@ export default function MenuBar({ onToggleTheme, theme, onOpenApp, onCloseAll, o
         <div className="menu-bar" ref={menuRef}>
             <div className="menu-bar-left">
                 <div className="menu-item-container">
-                    <Apple
-                        size={16}
+                    <div
                         className={`menu-item apple-icon ${activeMenu === 'apple' ? 'active' : ''}`}
                         onClick={() => handleMenuClick('apple')}
-                    />
+                    >
+                        <Apple size={18} />
+                    </div>
                     {activeMenu === 'apple' && <DropdownMenu items={menus.apple} />}
                 </div>
 
@@ -130,20 +131,18 @@ export default function MenuBar({ onToggleTheme, theme, onOpenApp, onCloseAll, o
             </div>
 
             <div className="menu-bar-right">
-                <Wifi size={16} className="menu-item" />
-                <Battery size={16} className="menu-item" />
+                <div className="menu-item"><Wifi size={17} /></div>
+                <div className="menu-item"><Battery size={17} /></div>
                 <div className="menu-item" onClick={onToggleTheme}>
-                    {theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
+                    {theme === 'dark' ? <Moon size={17} /> : <Sun size={17} />}
                 </div>
-                <Search size={16} className="menu-item" />
-                <div className="menu-item">
-                    <Command size={16} />
-                </div>
-                <span className="menu-item">
+                <div className="menu-item"><Search size={17} /></div>
+                <div className="menu-item"><Command size={17} /></div>
+                <div className="menu-item date-display">
                     {date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                     {' '}
                     {date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
-                </span>
+                </div>
             </div>
         </div>
     );

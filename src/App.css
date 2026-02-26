@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --menu-height: 28px;
     --dock-height: 64px;
@@ -95,7 +99,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 40px;
+    /* Shift everything inward */
     z-index: 1000;
     border-bottom: 1px solid var(--border-glass);
     font-size: 13px;
@@ -108,16 +113,25 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    /* Restored original gap */
 }
 
 .menu-item {
+    white-space: nowrap;
     cursor: default;
-    padding: 2px 6px;
+    padding: 2px 4px;
     border-radius: 4px;
     transition: background 0.2s;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Never shrink icons */
+}
+
+.date-display {
+    padding-left: 8px;
+    font-weight: 600;
 }
 
 .menu-item:hover {
@@ -333,9 +347,25 @@
     right: 40px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     z-index: 10;
     width: 280px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.widgets-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.widgets-container {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .widget {
@@ -343,9 +373,10 @@
     backdrop-filter: blur(40px);
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-glass);
-    padding: 16px;
+    padding: 14px;
     color: var(--text-primary);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
 }
 
 .widget-label {
@@ -414,6 +445,45 @@
 
 .market-price.down {
     color: #FF3B30;
+}
+
+.stat-ticker {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-line {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-desc {
+    font-size: 11px;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ticker-header {
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+.ticker-footer {
+    display: none;
 }
 
 .github-mock-grid {
