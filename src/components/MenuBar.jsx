@@ -105,7 +105,7 @@ export default function MenuBar({ onToggleTheme, theme, onOpenApp, onCloseAll, o
                 </div>
 
                 <div className="menu-item-container">
-                    <span className={`menu-item font-bold ${activeMenu === 'finder' ? 'active' : ''}`} onClick={() => handleMenuClick('finder')}>Finder</span>
+                    <span className={`menu-item font-bold ${activeMenu === 'finder' ? 'active' : ''}`} onClick={() => handleMenuClick('finder')}>M.S.I</span>
                     {activeMenu === 'finder' && <DropdownMenu items={menus.finder} />}
                 </div>
 
