@@ -774,11 +774,6 @@
     .stat-value {
         font-size: 14px;
     }
-
-    /* Hide widgets when a window is focused to save space */
-    .window.focused~.widgets-container {
-        display: none !important;
-    }
 }
 
 @media screen and (max-width: 1024px) and (min-width: 769px) {

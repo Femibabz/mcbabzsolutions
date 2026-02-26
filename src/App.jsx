@@ -87,7 +87,8 @@ function App() {
                 onCloseAll={closeAllApps}
                 onMinimizeAll={minimizeAllApps}
             />
-            <Widgets />
+            {/* Only show widgets on mobile if no apps are open, or always on desktop */}
+            {(!(window.innerWidth < 768 && openApps.length > 0)) && <Widgets />}
 
             <div className="window-layer">
                 {openApps.map((app) => (
