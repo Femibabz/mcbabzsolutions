@@ -78,7 +78,7 @@ function App() {
     }, []);
 
     return (
-        <div className={`desktop ${getTimeClass()}`} data-theme={theme}>
+        <div className={`desktop ${getTimeClass()} ${openApps.length > 0 ? 'has-open-apps' : ''}`} data-theme={theme}>
             {isLocked && <MobileLockScreen onUnlock={() => setIsLocked(false)} />}
             <MenuBar
                 onToggleTheme={toggleTheme}
@@ -87,8 +87,7 @@ function App() {
                 onCloseAll={closeAllApps}
                 onMinimizeAll={minimizeAllApps}
             />
-            {/* Only show widgets on mobile if no apps are open, or always on desktop */}
-            {(!(window.innerWidth < 768 && openApps.length > 0)) && <Widgets />}
+            <Widgets />
 
             <div className="window-layer">
                 {openApps.map((app) => (
