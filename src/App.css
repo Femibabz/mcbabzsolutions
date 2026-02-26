@@ -706,7 +706,7 @@
         top: var(--menu-height) !important;
         left: 0 !important;
         width: 100% !important;
-        height: calc(100% - var(--menu-height) - 80px) !important;
+        height: calc(100% - var(--menu-height) - var(--dock-height) - 100px) !important;
         max-width: 100% !important;
         max-height: 100% !important;
         border-radius: 0;
@@ -721,9 +721,26 @@
         padding: 16px;
     }
 
-    /* Hide Widgets on Mobile to avoid clutter */
+    /* Restore Widgets on Mobile but in a scrollable container */
     .widgets-container {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        top: auto;
+        bottom: calc(var(--dock-height) + 40px);
+        right: 0;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        padding: 0 16px 20px 16px;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid var(--border-glass);
+        z-index: 50;
+    }
+
+    .widget {
+        width: 100%;
+        margin-bottom: 12px;
     }
 
     /* Lock Screen Adjustments */
