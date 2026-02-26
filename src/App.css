@@ -595,7 +595,7 @@
 
 .unlock-prompt {
     position: absolute;
-    bottom: 50px;
+    bottom: calc(85px + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -616,7 +616,7 @@
 
 .bottom-shortcuts {
     position: absolute;
-    bottom: 50px;
+    bottom: calc(85px + env(safe-area-inset-bottom));
     width: 100%;
     padding: 0 40px;
     display: flex;

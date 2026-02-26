@@ -51,7 +51,7 @@ export default function MobileLockScreen({ onUnlock }) {
                         onClick={handleUnlock}
                     >
                         <ChevronUp size={24} />
-                        <span>Swipe up to open</span>
+                        <span>Tap Arrow to Open</span>
                     </motion.div>
 
                     <div className="bottom-shortcuts">
