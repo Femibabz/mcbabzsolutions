@@ -39,6 +39,9 @@ export default function MobileLockScreen({ onUnlock }) {
                         <div className="lock-date">
                             {time.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' })}
                         </div>
+                        <div style={{ marginTop: '12px', fontSize: '14px', opacity: 0.8, fontWeight: '500', letterSpacing: '1px' }}>
+                            M.S.I - Data Solutions
+                        </div>
                     </div>
 
                     <motion.div
